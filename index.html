@@ -1,14 +1,7 @@
 <html>
 <head class="h-100">
     <meta charset="utf-8">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMFVC13WBE"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-XMFVC13WBE');
-    </script>
     <title>Template</title>
     <link rel="icon" href="logo.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
 
 </head>
 
@@ -37,35 +32,28 @@
     <header class="mb-auto"></header>
     <div id="app">
 
-        <main class="px-3"> <!-- anything in main is centered --> 
-
-            <h1 class="mt-4">Template</h1>
-
+        <main class="px-3">
+            <h1 class="mt-4">QR Code Generator</h1>
             <div class="mt-4" id="inputFormWidth">
-
-                    <label for="input1">Input form:</label>
-                    <input v-model="input1" id="input1" type="number" class="form-control" required>
-
-
-                    <p></p>
-
-
-                    <button class="btn btn-primary mt-3" @click="calculate">Calculate</button>
-
-                    <button class="btn btn-primary mt-3" @click="reset">Reset</button>
-                    <div v-if="output !== null" class="mt-4">
-                        <h1>Result:</h1>
-                        <h3>{{outputType}}: ${{ output.toFixed(2) }}</h3>
-                    </div>
+                <label for="qrInput">Enter text for QR code:</label>
+                <input v-model="qrInput" id="qrInput" type="text" class="form-control" required>
+                <button class="btn btn-primary mt-3" @click="generateQRCode">Generate</button>
+                <button class="btn btn-primary mt-3" @click="reset">Reset</button>
+                <div v-if="qrImage !== null" class="mt-4">
+                    <h3>Your QR code:</h3>
+                    <div v-html="qrImage"></div>
+                </div>
             </div>
-
-            <script src="script.js"></script>
         </main>
+        
     </div>
 
     <footer class="mt-auto text-white-50">
         <p>Check me out at <a href="https://qayyumayaan.dev/" class="text-white">my website.</a> <a href="https://github.com/qayyumayaan/" class="text-white">More info.</a></p>
         <p>This site uses Google Analytics.</p>
     </footer>
+
+    <script src="script.js"></script>
+
 </body>     
 </html>
