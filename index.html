@@ -35,7 +35,7 @@
             <h1 class="mt-4">QR Code Generator</h1>
             <div class="mt-4" id="inputFormWidth">
                 <label for="qrInput">Enter text or link for the QR code:</label>
-                <input v-model="qrInput" id="qrInput" type="text" class="form-control" required>
+                <input v-model="qrInput" id="qrInput" type="text" class="form-control" required @keyup.enter="generateQRCode">
                 <button class="btn btn-primary mt-3" @click="generateQRCode">Generate</button>
                 <button class="btn btn-primary mt-3" @click="reset">Reset</button>
                 <div v-if="qrImage !== null" class="mt-4">
