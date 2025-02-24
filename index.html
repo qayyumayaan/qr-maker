@@ -2,7 +2,7 @@
 <head class="h-100">
     <meta charset="utf-8">
 
-    <title>Template</title>
+    <title>Ayaan's QR Code Maker</title>
     <link rel="icon" href="logo.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -40,14 +40,18 @@
                 <label for="qrInput">Enter text or link for the QR code:</label>
                 <input v-model="qrInput" id="qrInput" type="text" class="form-control" required @keyup.enter="generateQRCode">
                 <button class="btn btn-primary mt-3" @click="generateQRCode">Generate</button>
-                <button class="btn btn-primary mt-3" @click="reset">Reset</button>
+                <button class="btn btn-secondary mt-3" @click="reset">Reset</button>
+        
                 <div v-if="qrImage !== null" class="mt-4">
                     <h3>Your QR code:</h3>
-                    <div v-html="qrImage"></div>
+                    <div v-html="qrImage" ref="qrContainer"></div>
+        
+                    <button class="btn btn-success mt-3" @click="copyToClipboard">{{ copyText }}</button>
+                    <button class="btn btn-info mt-3" @click="downloadQRCode">{{ downloadText }}</button>
                 </div>
             </div>
-        </main>
-        
+        </main>        
+          
     </div>
 
     <footer class="mt-auto text-white-50">
